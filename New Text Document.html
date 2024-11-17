@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="style.css">
+    <title>Bacon - Exploit.</title>
+</head>
+<body>
+    <nav>
+        <div class="main-container">
+            <div class="content">
+                <h1 data-aos="fade-left" data-aos-duration="1500" data-aos-delay="700">Bacon <span>BACON</span></h1>
+                <div data-aos="fade-right" data-aos-duration="1500" data-aos-delay="900" class="typewriter">
+                <p data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1100">Bacon Exploit 84 UNC.</p>
+                <div class="social-links">
+                </div>        
+                <div class="btn" data-aos="zoom-out" data-aos-duration="1500" data-aos-delay="1800">
+                    <a href="https://download943.mediafire.com/iw95x4tuzm6gKvZ9ROYgoN4sHLYbmRs0h0BmgVMRjcClx_5MIksJgT2e14Tpi4nSfV4RcwPtZrgoBiwxfx0WldfP9F-n50yZ5tu2AhxjxDfHrzr73JBvuFlOtjAZTyPvsyZgqAImtB9dgtAHfBBH2IBoylTPP2bSYrJAxEqq-er9/gzbxfaor1cscold/Bacon.rar" target="_blank" download>
+                        <button>
+                            <i class="fa-solid fa-download"></i> Download Bacon
+                        </button>
+                    </a>
+                </div>                                     
+            </div>
+            <div class="image" data-aos="zoom-in" data-aos-duration="3000">
+                <img src="https://i.imgur.com/GdT7owb.png" alt="">
+            </div>
+        </div>
+    </section>
+    <audio id="background-audio" loop>
+        <source id="audio-source" src="" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({offset:0,});
+
+      // Danh sách các file MP3
+      const audioFiles = [
+        'tng.mp3',
+        'tng1.mp3',
+        'tng2.mp3',
+        'tng3.mp3',
+        'tng4.mp3',
+        'tng5.mp3',
+        'tng6.mp3',
+        'tng7.mp3',
+        'tng8.mp3',
+        'tng9.mp3'
+      ];
+
+      let currentAudioIndex = 0;
+
+      // Chọn file ngẫu nhiên khi tải trang
+      function getRandomAudio() {
+        return audioFiles[Math.floor(Math.random() * audioFiles.length)];
+      }
+
+      function playAudio() {
+        const audio = document.getElementById('background-audio');
+        const audioSource = document.getElementById('audio-source');
+        
+        // Gán file ngẫu nhiên từ đầu
+        audioSource.src = getRandomAudio();
+        audio.load();
+        audio.play();
+
+        // Khi kết thúc bài nhạc, phát bài tiếp theo trong danh sách
+        audio.onended = function() {
+          currentAudioIndex = (currentAudioIndex + 1) % audioFiles.length;
+          audioSource.src = audioFiles[currentAudioIndex];
+          audio.load();
+          audio.play();
+        };
+
+        // Xóa sự kiện sau khi phát nhạc
+        document.removeEventListener('click', playAudioOnInteraction);
+        document.removeEventListener('scroll', playAudioOnInteraction);
+      }
+
+      // Bắt sự kiện người dùng click hoặc cuộn trang
+      function playAudioOnInteraction() {
+        playAudio();
+      }
+
+      // Lắng nghe sự kiện tương tác của người dùng
+      document.addEventListener('click', playAudioOnInteraction);
+      document.addEventListener('scroll', playAudioOnInteraction);
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
